@@ -1,17 +1,23 @@
 import PropTypes from 'prop-types';
 import { Card, CardInfo, Poster, Title } from './MovieCard.styled';
 import * as api from 'services/index';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MovieCard = ({ img, name, title, to, state }) => {
+	const navigate = useNavigate();
+
+	const handleCardClick = () => {
+		navigate(`/${to}`, { state });
+	};
+
 	return (
 		<Card>
-			<Link to={to} state={state}>
+			<div onClick={handleCardClick}>
 				<Poster src={api.getImage(img)} />
 				<CardInfo>
 					<Title>{name || title}</Title>
 				</CardInfo>
-			</Link>
+			</div>
 		</Card>
 	);
 };
