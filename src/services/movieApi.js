@@ -7,6 +7,13 @@ const options = {
 	},
 };
 
+export async function getSearchedMovie(movieName) {
+	const response = await fetch(
+		`https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US`,
+		options
+	);
+	return response.json();
+}
 export async function getPopularMovies() {
 	const response = await fetch(
 		'https://api.themoviedb.org/3/trending/all/day?language=en-US',
