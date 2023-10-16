@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Container = styled.div`
 	max-width: 1440px;
 	margin: 0 auto;
-	padding: 0 16px;
+	padding: 0 16px 64px;
 	position: relative;
 `;
 
@@ -50,11 +50,13 @@ export const StyledLink = styled(NavLink)`
 
 export const Footer = styled.footer`
 	bottom: 0;
-	/* width: 100%; */
+	position: absolute;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 64px;
+	height: 64px;
+
 	padding-right: 24px;
 	padding-left: 24px;
 	padding-top: 12px;

@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from 'pages/Home';
+import Home from 'pages/Home/Home';
 import Movies from 'pages/Movies';
-import MovieDetails from 'pages/MovieDetails';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
 import NotFound from 'pages/NotFound';
 
 import './App.css';
-import SharedLayout from './SharedLayout';
+import SharedLayout from './SharedLayout/SharedLayout';
 
 function App() {
 	return (

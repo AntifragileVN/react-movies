@@ -7,7 +7,15 @@ const options = {
 	},
 };
 
-export async function getTodayPopularFilms(movieId) {
+export async function getPopularMovies() {
+	const response = await fetch(
+		'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+		options
+	);
+	return response.json();
+}
+
+export async function getMovieInfo(movieId) {
 	const response = await fetch(
 		`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
 		options

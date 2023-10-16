@@ -21,7 +21,6 @@ const Cast = () => {
 
 	return (
 		<div>
-			<h1>Cast List</h1>
 			{cast && (
 				<CastList>
 					{cast.cast.map(({ id, character, name, profile_path }) => (

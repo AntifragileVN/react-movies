@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ReviewCard from './ReviewCard/ReviewCard';
 import * as api from 'services/index';
-import { Container } from 'components/SharedLayout.styled';
+import { Container } from 'components/SharedLayout/SharedLayout.styled';
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState(null);

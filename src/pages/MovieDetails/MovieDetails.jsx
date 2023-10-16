@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Container } from 'components/SharedLayout.styled';
+import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import * as api from 'services/index';
 
 import {
@@ -14,15 +14,18 @@ import {
 	MovieDate,
 	GenresList,
 	GenreItem,
+	LinkContainer,
+	NavLinkStyled,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
 	const { movieId } = useParams();
-	const backLink = useRef(useLocation());
+	const location = useLocation();
+	const backLinkLocationRef = useRef(location.state?.from ?? '/');
 	const [movieInfo, setMovieInfo] = useState(null);
 
 	useEffect(() => {
-		api.getTodayPopularFilms(movieId)
+		api.getMovieInfo(movieId)
 			.then((response) => {
 				console.log(response);
 				setMovieInfo(response);
@@ -30,12 +33,9 @@ const MovieDetails = () => {
 			.catch((err) => console.error(err));
 	}, [movieId]);
 
-	useEffect(() => {
-		console.log(backLink);
-	});
-
 	return (
 		<main>
+			<NavLink to={backLinkLocationRef.current}> Назад </NavLink>
 			{movieInfo && (
 				<DarkContainer>
 					<DetailContainer>
@@ -74,8 +74,10 @@ const MovieDetails = () => {
 					</DetailContainer>
 				</DarkContainer>
 			)}
-			<NavLink to="cast">Cast</NavLink>
-			<NavLink to="reviews">Reviews</NavLink>
+			<LinkContainer>
+				<NavLinkStyled to="cast">Cast</NavLinkStyled>
+				<NavLinkStyled to="reviews">Reviews</NavLinkStyled>
+			</LinkContainer>
 
 			<Outlet />
 		</main>

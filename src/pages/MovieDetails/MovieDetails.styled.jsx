@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DarkContainer = styled.div`
@@ -102,4 +103,19 @@ export const GenreItem = styled.li`
 
 export const TopicTitle = styled.p`
 	font-weight: 600;
+`;
+
+export const LinkContainer = styled.div`
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	column-gap: 40px;
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+	text-decoration: none;
+	color: #000;
+	font-weight: 700;
+	font-size: 26px;
+	position: relative;
 `;

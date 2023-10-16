@@ -1,5 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { Header, StyledLink, Menu, Footer } from './SharedLayout.styled';
+import {
+	Header,
+	StyledLink,
+	Container,
+	Menu,
+	Footer,
+} from './SharedLayout.styled';
 
 const SharedLayout = () => {
 	return (
@@ -16,7 +22,9 @@ const SharedLayout = () => {
 					</Menu>
 				</nav>
 			</Header>
-			<Outlet />
+			<Container>
+				<Outlet />
+			</Container>
 			<Footer>Footer</Footer>
 		</>
 	);
