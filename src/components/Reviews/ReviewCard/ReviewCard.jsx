@@ -25,7 +25,7 @@ const ReviewCard = ({ avatar, author, date, content }) => {
 };
 
 ReviewCard.propTypes = {
-	avatar: PropTypes.string.isRequired,
+	avatar: PropTypes.string,
 	author: PropTypes.string.isRequired,
 	date: PropTypes.string.isRequired,
 	content: PropTypes.string.isRequired,

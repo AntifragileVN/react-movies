@@ -5,23 +5,20 @@ import * as api from 'services/index';
 import { Container } from 'components/SharedLayout/SharedLayout.styled';
 
 const Reviews = () => {
-	const [reviews, setReviews] = useState(null);
+	const [reviews, setReviews] = useState([]);
 
 	const { movieId } = useParams();
 
 	useEffect(() => {
 		api.getReviews(movieId)
-			.then((response) => {
-				console.log(response);
-				setReviews(response.results);
-			})
+			.then((response) => setReviews(response.results))
 			.catch((err) => console.error(err));
 	}, []);
 
 	return (
 		<Container>
 			<ul>
-				{reviews &&
+				{reviews.length !== 0 ? (
 					reviews.map(
 						({
 							author,
@@ -38,7 +35,10 @@ const Reviews = () => {
 								content={content}
 							/>
 						)
-					)}
+					)
+				) : (
+					<h1>There is no reviews yet :/</h1>
+				)}
 			</ul>
 		</Container>
 	);

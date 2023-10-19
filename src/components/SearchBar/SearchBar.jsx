@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
+import { SearchForm, FormInput, SearchButton, Icon } from './SearchBar.styled';
 
 const SearchBar = ({ onSearchSubmit, onChange, value }) => {
 	return (
-		<form onSubmit={(e) => onSearchSubmit(e)}>
-			<input
+		<SearchForm onSubmit={(e) => onSearchSubmit(e)}>
+			<FormInput
 				type="text"
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
 			/>
-			<button type="submit">Search</button>
-		</form>
+			<SearchButton type="submit">
+				<Icon />
+			</SearchButton>
+		</SearchForm>
 	);
 };
 SearchBar.propTypes = {

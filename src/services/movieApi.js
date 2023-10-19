@@ -31,6 +31,7 @@ export async function getMovieInfo(movieId) {
 }
 
 export function getImage(image) {
+	if (!image) return 'https://fakeimg.pl/1200x1800?text=+';
 	return `https://image.tmdb.org/t/p/original/${image}`;
 }
 
