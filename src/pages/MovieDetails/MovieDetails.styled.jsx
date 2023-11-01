@@ -1,80 +1,46 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const DarkContainer = styled.div`
+export const BackgroundImage = styled.div`
 	background-color: #000000;
-	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 20%;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+
+	height: 650px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export const DetailContainer = styled.div`
-	width: 80%;
-	margin: 0 auto;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-
 	display: flex;
-	align-items: start;
-	justify-content: start;
 	color: #fff;
 `;
 
-export const BackgroundContainer = styled.div`
-	position: relative;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-attachment: local;
-	background-position: right;
-	width: 100%;
-	height: 500px;
-
-	&::before {
-		content: '';
-		padding-left: 40px;
-		background: rgba(
-			0,
-			0,
-			0,
-			0.5
-		); /* Adjust the alpha value (0.5) for darkness */
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-	}
-`;
-
 export const TextContainer = styled.div`
-	color: white;
-	position: absolute;
-
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(
-		0,
-		0,
-		0,
-		0.5
-	); /* Adjust the alpha value (0.7) for text background opacity */
-	padding: 10px;
+	padding: 30px;
 `;
 
 export const MovieImage = styled.img`
 	max-width: 100%;
-	max-height: 450px;
+	max-height: 550px;
 	border-radius: 5px;
 `;
 
 export const TitleWrapper = styled.div`
 	display: flex;
 	align-items: center;
-	column-gap: 10px;
+	margin-bottom: 30px;
+	column-gap: 15px;
 `;
 
 export const Title = styled.h1`
-	margin: 0;
 	font-weight: 700;
 	font-size: 34px;
 `;
@@ -86,9 +52,9 @@ export const MovieDate = styled.span`
 `;
 
 export const GenresList = styled.ul`
-	list-style: none;
 	display: flex;
 	column-gap: 20px;
+	margin-bottom: 30px;
 	padding: 0;
 `;
 
@@ -101,21 +67,51 @@ export const GenreItem = styled.li`
 	font-weight: 500;
 `;
 
-export const TopicTitle = styled.p`
+export const TopicTitle = styled.h3`
 	font-weight: 600;
+	margin-bottom: 20px;
 `;
 
 export const LinkContainer = styled.div`
-	margin-top: 30px;
 	display: flex;
 	align-items: center;
 	column-gap: 40px;
+	margin-bottom: 30px;
+	padding: 0;
 `;
 
 export const NavLinkStyled = styled(NavLink)`
+	position: relative;
+
 	text-decoration: none;
+	/* display: block; */
+	padding: 10px 15px;
 	color: #000;
 	font-weight: 700;
 	font-size: 26px;
-	position: relative;
+
+	&.back {
+		padding: 5px 15px;
+		outline: 2px solid black;
+		border-radius: 5px;
+	}
+
+	&::after {
+		content: '';
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		display: block;
+		width: 100%;
+		height: 5px;
+		background-color: black;
+		transform: scaleX(0);
+		transition: 200ms linear;
+	}
+
+	&:hover::after {
+		transform: scaleX(1);
+	}
 `;

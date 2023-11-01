@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { CastList } from './Cast.styled';
-
 import * as api from 'services/index';
+
+import { CastList, CastContainer } from './Cast.styled';
+import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import ActorCard from './ActorCard/ActorCard';
 
 const Cast = () => {
@@ -13,14 +14,14 @@ const Cast = () => {
 	useEffect(() => {
 		api.getCast(movieId)
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				setCast(response);
 			})
 			.catch((err) => console.error(err));
 	}, []);
 
 	return (
-		<div>
+		<Container>
 			{cast && (
 				<CastList>
 					{cast.cast.map(({ id, character, name, profile_path }) => (
@@ -33,7 +34,7 @@ const Cast = () => {
 					))}
 				</CastList>
 			)}
-		</div>
+		</Container>
 	);
 };
 

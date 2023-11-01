@@ -4,12 +4,14 @@ export const Card = styled.li`
 	min-width: 140px;
 	max-width: 200px;
 
-	margin: 30px 20px;
 	border-radius: 8px;
 	padding-bottom: 10px;
 	border: 1px solid #cec5c57d;
 	overflow: hidden;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	&:not(:last-child) {
+		margin-right: 20px;
+	}
 `;
 export const ActorImage = styled.img`
 	width: 100%;

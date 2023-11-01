@@ -1,11 +1,5 @@
-import {
-	Card,
-	InfoGroup,
-	Avatar,
-	Info,
-	Author,
-	ReviewDate,
-} from './ReviewCard.styled';
+import { Card, InfoGroup, Avatar, Info, Author, ReviewDate } from './ReviewCard.styled';
+import Paragraphs from 'components/Paragraphs/Paragraphs';
 import PropTypes from 'prop-types';
 import * as api from 'services/index';
 
@@ -19,7 +13,7 @@ const ReviewCard = ({ avatar, author, date, content }) => {
 					<ReviewDate>{date}</ReviewDate>
 				</Info>
 			</InfoGroup>
-			{content}
+			<Paragraphs content={content} />
 		</Card>
 	);
 };

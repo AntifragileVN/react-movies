@@ -1,35 +1,23 @@
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-
-import {
-	Header,
-	StyledLink,
-	Container,
-	Menu,
-	Footer,
-} from './SharedLayout.styled';
+import { Header, StyledLink, Menu, Footer, Container } from './SharedLayout.styled';
 
 const SharedLayout = () => {
 	return (
 		<>
 			<Header>
-				<nav>
+				<Container>
 					<Menu>
-						<li>
-							<StyledLink to="/">Home</StyledLink>
-						</li>
-						<li>
-							<StyledLink to="/movies">Movies</StyledLink>
-						</li>
+						<StyledLink to="/">Home</StyledLink>
+
+						<StyledLink to="/movies">Movies</StyledLink>
 					</Menu>
-				</nav>
+				</Container>
 			</Header>
-			<Container>
-				<Suspense fallback={<div>Loading...</div>}>
-					<Outlet />
-				</Suspense>
-			</Container>
-			<Footer>Footer</Footer>
+			<Suspense fallback={<div>Loading...</div>}>
+				<Outlet />
+			</Suspense>
+			<Footer>Made by Vitalii Dudar © 2023</Footer>
 		</>
 	);
 };

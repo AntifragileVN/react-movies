@@ -7,7 +7,10 @@ const Home = () => {
 
 	useEffect(() => {
 		api.getPopularMovies()
-			.then((response) => setMovieList(response.results))
+			.then((response) => {
+				console.log(response);
+				setMovieList(response.results);
+			})
 			.catch((err) => console.error(err));
 	}, []);
 

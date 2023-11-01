@@ -3,6 +3,8 @@ body {
 }
 
 #root {
-	min-height: 100vh;
+	padding-top: 64px;
+	padding-bottom: 64px;
 	position: relative;
+	min-height: 100vh;
 }

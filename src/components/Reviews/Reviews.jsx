@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReviewCard from './ReviewCard/ReviewCard';
 import * as api from 'services/index';
 import { Container } from 'components/SharedLayout/SharedLayout.styled';
+import { ReviewsList } from './Reviews.styled';
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
@@ -11,35 +12,30 @@ const Reviews = () => {
 
 	useEffect(() => {
 		api.getReviews(movieId)
-			.then((response) => setReviews(response.results))
+			.then((response) => {
+				// console.log(response);
+				setReviews(response.results);
+			})
 			.catch((err) => console.error(err));
 	}, []);
 
 	return (
 		<Container>
-			<ul>
+			<ReviewsList>
 				{reviews.length !== 0 ? (
-					reviews.map(
-						({
-							author,
-							content,
-							created_at,
-							id,
-							author_details,
-						}) => (
-							<ReviewCard
-								key={id}
-								avatar={author_details.avatar_path}
-								author={author}
-								date={created_at}
-								content={content}
-							/>
-						)
-					)
+					reviews.map(({ author, content, created_at, id, author_details }) => (
+						<ReviewCard
+							key={id}
+							avatar={author_details.avatar_path}
+							author={author}
+							date={created_at}
+							content={content}
+						/>
+					))
 				) : (
 					<h1>There is no reviews yet :/</h1>
 				)}
-			</ul>
+			</ReviewsList>
 		</Container>
 	);
 };

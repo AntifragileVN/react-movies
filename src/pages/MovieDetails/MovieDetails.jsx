@@ -1,12 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
-import { useParams, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import * as api from 'services/index';
 
 import {
-	DarkContainer,
 	DetailContainer,
-	BackgroundContainer,
+	BackgroundImage,
 	TextContainer,
 	MovieImage,
 	TitleWrapper,
@@ -14,12 +13,14 @@ import {
 	MovieDate,
 	GenresList,
 	GenreItem,
+	TopicTitle,
 	LinkContainer,
 	NavLinkStyled,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
 	const { movieId } = useParams();
+	console.log(movieId);
 	const location = useLocation();
 	const backLinkLocationRef = useRef(location.state?.from ?? '/');
 	const [movieInfo, setMovieInfo] = useState(null);
@@ -35,28 +36,25 @@ const MovieDetails = () => {
 
 	return (
 		<main>
-			<NavLink to={backLinkLocationRef.current}> Назад </NavLink>
 			{movieInfo && (
-				<DarkContainer>
-					<DetailContainer>
-						<MovieImage
-							src={api.getImage(movieInfo.poster_path)}
-							alt=""
-						/>
-						<BackgroundContainer
-							style={{
-								backgroundImage: `url(${api.getImage(
-									movieInfo.backdrop_path
-								)})`,
-							}}
-						>
+				<BackgroundImage
+					style={{
+						backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url(${api.getImage(
+							movieInfo.backdrop_path
+						)})`,
+					}}
+				>
+					<Container>
+						<DetailContainer>
+							<MovieImage
+								src={api.getImage(movieInfo.poster_path)}
+								alt=""
+							/>
+
 							<TextContainer>
 								<TitleWrapper>
 									<Title>{movieInfo.title}</Title>
-									<MovieDate>
-										{' '}
-										({movieInfo.release_date})
-									</MovieDate>
+									<MovieDate> ({movieInfo.release_date})</MovieDate>
 								</TitleWrapper>
 
 								<GenresList>
@@ -65,20 +63,25 @@ const MovieDetails = () => {
 									))}
 								</GenresList>
 								<div>
-									<h3>Overwiev</h3>
+									<TopicTitle>Overwiev</TopicTitle>
 									{movieInfo.overview}
 								</div>
 								<div></div>
 							</TextContainer>
-						</BackgroundContainer>
-					</DetailContainer>
-				</DarkContainer>
+						</DetailContainer>
+					</Container>
+				</BackgroundImage>
 			)}
-			<LinkContainer>
-				<NavLinkStyled to="cast">Cast</NavLinkStyled>
-				<NavLinkStyled to="reviews">Reviews</NavLinkStyled>
-			</LinkContainer>
 
+			<Container>
+				<LinkContainer>
+					<NavLinkStyled className="back" to={backLinkLocationRef.current}>
+						Back
+					</NavLinkStyled>
+					<NavLinkStyled to="cast">Cast</NavLinkStyled>
+					<NavLinkStyled to="reviews">Reviews</NavLinkStyled>
+				</LinkContainer>
+			</Container>
 			<Outlet />
 		</main>
 	);
