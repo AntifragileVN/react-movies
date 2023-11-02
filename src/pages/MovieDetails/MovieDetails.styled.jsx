@@ -11,33 +11,42 @@ export const BackgroundImage = styled.div`
 	margin-right: auto;
 	margin-bottom: 30px;
 
-	height: 650px;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	@media screen and (min-width: 1230px) {
+		height: 650px;
+	}
 `;
 
 export const DetailContainer = styled.div`
-	display: flex;
+	padding: 30px 0;
 	color: #fff;
+
+	@media screen and (min-width: 768px) {
+		display: flex;
+	}
 `;
 
 export const TextContainer = styled.div`
-	padding: 30px;
+	padding-left: 30px;
 `;
 
 export const MovieImage = styled.img`
 	max-width: 100%;
 	max-height: 550px;
 	border-radius: 5px;
+
+	@media screen and (max-width: 768px) {
+		margin-bottom: 30px;
+	}
 `;
 
 export const TitleWrapper = styled.div`
-	display: flex;
-	align-items: center;
 	margin-bottom: 30px;
 	column-gap: 15px;
+
+	@media screen and (min-width: 1230px) {
+		display: flex;
+		align-items: center;
+	}
 `;
 
 export const Title = styled.h1`
@@ -83,8 +92,6 @@ export const LinkContainer = styled.div`
 export const NavLinkStyled = styled(NavLink)`
 	position: relative;
 
-	text-decoration: none;
-	/* display: block; */
 	padding: 10px 15px;
 	color: #000;
 	font-weight: 700;

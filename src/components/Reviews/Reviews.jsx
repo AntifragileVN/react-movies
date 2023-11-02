@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ReviewCard from './ReviewCard/ReviewCard';
 import * as api from 'services/index';
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
+
+import ReviewCard from './ReviewCard/ReviewCard';
 import { ReviewsList } from './Reviews.styled';
 
 const Reviews = () => {
@@ -20,7 +20,7 @@ const Reviews = () => {
 	}, []);
 
 	return (
-		<Container>
+		<>
 			<ReviewsList>
 				{reviews.length !== 0 ? (
 					reviews.map(({ author, content, created_at, id, author_details }) => (
@@ -36,7 +36,7 @@ const Reviews = () => {
 					<h1>There is no reviews yet :/</h1>
 				)}
 			</ReviewsList>
-		</Container>
+		</>
 	);
 };
 

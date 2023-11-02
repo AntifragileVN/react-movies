@@ -20,7 +20,6 @@ import {
 
 const MovieDetails = () => {
 	const { movieId } = useParams();
-	console.log(movieId);
 	const location = useLocation();
 	const backLinkLocationRef = useRef(location.state?.from ?? '/');
 	const [movieInfo, setMovieInfo] = useState(null);
@@ -81,8 +80,9 @@ const MovieDetails = () => {
 					<NavLinkStyled to="cast">Cast</NavLinkStyled>
 					<NavLinkStyled to="reviews">Reviews</NavLinkStyled>
 				</LinkContainer>
+
+				<Outlet />
 			</Container>
-			<Outlet />
 		</main>
 	);
 };

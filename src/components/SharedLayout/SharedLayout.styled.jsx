@@ -1,11 +1,30 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+// export const Container = styled.div`
+// 	position: relative;
+// 	max-width: 1230px;
+// 	padding: 0 15px;
+// 	margin: 0 auto;
+// `;
+
 export const Container = styled.div`
 	position: relative;
 	max-width: 1230px;
 	padding: 0 15px;
 	margin: 0 auto;
+
+	@media screen and (min-width: 480px) {
+		width: 480px;
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 768px;
+	}
+
+	@media screen and (min-width: 1230px) {
+		width: 1230px;
+	}
 `;
 
 export const Header = styled.header`
@@ -25,6 +44,12 @@ export const Header = styled.header`
 	background: #424242;
 	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 		0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const HeaderWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	column-gap: 40px;
 `;
 
 export const Menu = styled.nav`

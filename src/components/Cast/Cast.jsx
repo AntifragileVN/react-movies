@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as api from 'services/index';
 
-import { CastList, CastContainer } from './Cast.styled';
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
+import { CastList } from './Cast.styled';
 import ActorCard from './ActorCard/ActorCard';
 
 const Cast = () => {
@@ -21,7 +20,7 @@ const Cast = () => {
 	}, []);
 
 	return (
-		<Container>
+		<>
 			{cast && (
 				<CastList>
 					{cast.cast.map(({ id, character, name, profile_path }) => (
@@ -34,7 +33,7 @@ const Cast = () => {
 					))}
 				</CastList>
 			)}
-		</Container>
+		</>
 	);
 };
 
